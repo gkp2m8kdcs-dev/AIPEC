@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy — AIPEC</title>
+    <meta name="description" content="AIPEC's privacy policy. We collect nothing. Your investment data stays on your device." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #07090d;
+            --surface: #0e1218;
+            --surface-2: #141923;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --text: #e8ecf3;
+            --text-muted: #8a93a6;
+            --primary: #6ee7b7;
+            --primary-dark: #10b981;
+            --accent: #5eead4;
+            --gold: #fbbf24;
+            --gradient: linear-gradient(135deg, #6ee7b7 0%, #5eead4 50%, #38bdf8 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 13, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #07090d;
+            font-size: 16px;
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a.active { color: var(--text); }
+
+        .page-header {
+            padding: 100px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(110, 231, 183, 0.08);
+            border: 1px solid rgba(110, 231, 183, 0.2);
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .updated {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        article {
+            padding-bottom: 80px;
+        }
+
+        article h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 48px 0 16px;
+            letter-spacing: -0.01em;
+        }
+
+        article h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 28px 0 8px;
+            color: var(--primary);
+        }
+
+        article p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        article ul {
+            list-style: none;
+            margin: 12px 0 24px;
+        }
+
+        article ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        article ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        article strong { color: var(--text); font-weight: 600; }
+
+        .callout {
+            background: linear-gradient(135deg, rgba(110, 231, 183, 0.06), rgba(94, 234, 212, 0.02));
+            border: 1px solid rgba(110, 231, 183, 0.18);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+
+        .callout p { margin: 0; color: var(--text); }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            background: var(--surface);
+            text-align: center;
+        }
+
+        footer p { color: var(--text-muted); font-size: 13px; }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 768px) {
+            .nav-links { gap: 16px; }
+            .page-header { padding: 70px 0 30px; }
+            article h2 { font-size: 20px; margin-top: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-mark">A</div>
+                <span>AIPEC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="privacy.html" class="active">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Effective September 2026
+            </div>
+            <h1>Your data stays <span class="gradient-text">on your device.</span></h1>
+            <p class="updated">Last updated: September 30, 2026</p>
+        </div>
+    </header>
+
+    <article class="container">
+        <p>AIPEC ("we," "our," or "us") is built around a simple principle: a personal investment journal should not require you to hand over your personal data. This Privacy Policy explains what information AIPEC collects, what it does not collect, and the limited circumstances under which anything leaves your device.</p>
+
+        <div class="callout">
+            <p><strong>Short version:</strong> AIPEC does not collect, transmit, or sell any personal data. Everything you record is stored locally on your device. You can export or delete it at any time.</p>
+        </div>
+
+        <h2>1. Information we do not collect</h2>
+        <p>AIPEC does not collect, store, transmit, or have access to any of the following:</p>
+        <ul>
+            <li>Your name, email address, phone number, or any contact details.</li>
+            <li>Account credentials — there is no account, no sign-up, and no login.</li>
+            <li>Your holdings, transactions, cost basis, asset categories, or portfolio values.</li>
+            <li>Receipts, photos, screenshots, or any images you attach to records.</li>
+            <li>Goals, notes, custom tags, or any text you enter into the app.</li>
+            <li>Device identifiers, advertising IDs, IP addresses, or usage telemetry.</li>
+            <li>Crash reports, analytics events, or performance diagnostics.</li>
+        </ul>
+
+        <h2>2. How your data is stored</h2>
+        <p>All data you enter into AIPEC — including holdings, transactions, receipts, goals, and notes — is stored locally on your device using the iOS data protection framework. Data is encrypted at rest by iOS and protected by the same passcode, Face ID, or Touch ID that locks your device.</p>
+        <p>AIPEC does not synchronize your data to any cloud service, server, or third-party platform. If you uninstall the app without exporting first, that data is removed with the app.</p>
+
+        <h2>3. Device permissions</h2>
+        <p>AIPEC requests only the device permissions it needs to function. Each permission is optional and can be denied at any time in your device settings:</p>
+        <ul>
+            <li><strong>Camera</strong> — used solely to capture photos of receipts or trade confirmations that you choose to attach to a transaction. Photos are saved locally; they are never uploaded.</li>
+            <li><strong>Photo Library</strong> — used solely to attach existing images (receipts, screenshots) to a transaction. AIPEC reads only what you select; it does not enumerate or scan your library.</li>
+            <li><strong>Photo Library (Add)</strong> — used solely when you choose to save an exported chart or report that you have explicitly requested.</li>
+        </ul>
+        <p>AIPEC does not request your location, contacts, microphone, or any other sensitive permission.</p>
+
+        <h2>4. Third-party services</h2>
+        <p>AIPEC does not embed analytics SDKs, advertising networks, social login providers, or any third-party tracking code. The app makes no network requests related to your personal data.</p>
+        <p>If you choose to contact us by email, the contents of that message are governed by your email provider's privacy practices. We use the message only to respond to your inquiry.</p>
+
+        <h2>5. Children</h2>
+        <p>AIPEC is not directed at children under 13. Because the app collects no personal data from anyone, the Children's Online Privacy Protection Act (COPPA) is not implicated.</p>
+
+        <h2>6. Your rights and controls</h2>
+        <p>Because AIPEC does not collect your data, there is nothing to access, modify, or erase on our end. On your device, you can at any time:</p>
+        <ul>
+            <li>Export your full portfolio record as a backup file.</li>
+            <li>Delete individual transactions, holdings, receipts, or goals.</li>
+            <li>Delete all AIPEC data by removing the app from your device.</li>
+            <li>Revoke camera or photo library access in iOS Settings.</li>
+        </ul>
+
+        <h2>7. International users</h2>
+        <p>AIPEC does not transfer personal data across international borders because it does not transfer personal data at all. The protections described in this policy apply equally to all users regardless of jurisdiction.</p>
+
+        <h2>8. Changes to this policy</h2>
+        <p>If we ever change this Privacy Policy, we will update the "Last updated" date above and, where appropriate, notify you through the App Store listing or an in-app notice. Because AIPEC does not know who its users are, we cannot email individual users about changes.</p>
+
+        <h2>9. Contact</h2>
+        <p>If you have any questions about this Privacy Policy or AIPEC's data practices, please contact us:</p>
+        <p><strong>Email:</strong> <a href="mailto:Sitikhodijah00232@gmail.com" style="color:var(--primary);text-decoration:none;">Sitikhodijah00232@gmail.com</a></p>
+        <p>We read and respond to every message.</p>
+    </article>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 AIPEC. Your data, your device, your decision.</p>
+            <p style="margin-top:12px;">
+                <a href="index.html">Home</a> ·
+                <a href="privacy.html">Privacy</a> ·
+                <a href="support.html">Support</a> ·
+                <a href="terms.html">Terms of Use</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

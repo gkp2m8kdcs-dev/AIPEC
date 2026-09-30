@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIPEC — Personal Investment Journal</title>
+    <meta name="description" content="AIPEC is a privacy-first, on-device investment journal for thoughtful self-directed investors. Track every asset, log every trade, and plan with clarity." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #07090d;
+            --surface: #0e1218;
+            --surface-2: #141923;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --text: #e8ecf3;
+            --text-muted: #8a93a6;
+            --primary: #6ee7b7;
+            --primary-dark: #10b981;
+            --accent: #5eead4;
+            --gold: #fbbf24;
+            --danger: #fb7185;
+            --gradient: linear-gradient(135deg, #6ee7b7 0%, #5eead4 50%, #38bdf8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(7, 9, 13, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #07090d;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            padding: 9px 18px;
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 180px 0 120px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(110, 231, 183, 0.18) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(110, 231, 183, 0.08);
+            border: 1px solid rgba(110, 231, 183, 0.2);
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(40px, 7vw, 72px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-sub {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #07090d;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(110, 231, 183, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--surface-2);
+            color: var(--text);
+            border: 1px solid var(--border-strong);
+        }
+
+        .btn-secondary:hover {
+            background: #1c2333;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .device-frame {
+            background: linear-gradient(180deg, #141923 0%, #0e1218 100%);
+            border: 1px solid var(--border-strong);
+            border-radius: 28px;
+            padding: 16px;
+            max-width: 920px;
+            margin: 0 auto;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 0 60px rgba(110, 231, 183, 0.08);
+            position: relative;
+        }
+
+        .device-screen {
+            background: #0a0d12;
+            border-radius: 18px;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 16px;
+            min-height: 360px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(110, 231, 183, 0.1) 0%, rgba(94, 234, 212, 0.05) 100%);
+            border: 1px solid rgba(110, 231, 183, 0.15);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .stat-change {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .mini-chart {
+            margin-top: 14px;
+            height: 60px;
+            background: linear-gradient(180deg, rgba(110, 231, 183, 0.2) 0%, transparent 100%);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .panel {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .panel-title {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+        }
+
+        .donut {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .donut-svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .row:last-child { border-bottom: none; }
+
+        .row-symbol {
+            font-weight: 600;
+        }
+
+        .row-change.up { color: var(--primary); }
+        .row-change.down { color: var(--danger); }
+
+        /* Section base */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-eyebrow {
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 14px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: 17px;
+            color: var(--text-muted);
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* Features */
+        .features {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px 28px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-strong);
+            transform: translateY(-4px);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(110, 231, 183, 0.15), rgba(94, 234, 212, 0.08));
+            border: 1px solid rgba(110, 231, 183, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .feature-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Privacy highlight */
+        .privacy-section {
+            text-align: center;
+        }
+
+        .privacy-card {
+            background: linear-gradient(135deg, rgba(110, 231, 183, 0.06) 0%, rgba(94, 234, 212, 0.02) 100%);
+            border: 1px solid rgba(110, 231, 183, 0.18);
+            border-radius: 24px;
+            padding: 60px 48px;
+            max-width: 820px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-card::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(110, 231, 183, 0.15) 0%, transparent 70%);
+        }
+
+        .privacy-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .privacy-item {
+            text-align: left;
+        }
+
+        .privacy-item h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .privacy-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Tools */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 22px 20px;
+            transition: all 0.2s;
+        }
+
+        .tool-card:hover {
+            border-color: var(--primary);
+            background: var(--surface-2);
+        }
+
+        .tool-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tool-name {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .tool-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 0 140px;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, rgba(110, 231, 183, 0.08), rgba(94, 234, 212, 0.04));
+            border: 1px solid rgba(110, 231, 183, 0.2);
+            border-radius: 24px;
+            padding: 64px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .cta-box p {
+            color: var(--text-muted);
+            max-width: 540px;
+            margin: 0 auto 28px;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
+            background: var(--surface);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .device-screen { grid-template-columns: 1fr; }
+            .hero { padding: 140px 0 80px; }
+            section { padding: 70px 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">
+                <div class="logo-mark">A</div>
+                <span>AIPEC</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+            <a href="support.html" class="nav-cta">Get Support</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Privacy-first · On-device · No account required
+            </div>
+            <h1>The investment journal<br/><span class="gradient-text">that thinks with you.</span></h1>
+            <p class="hero-sub">AIPEC is a sophisticated personal investment journal for thoughtful, self-directed investors. Track every asset, log every trade, and plan your financial future with clarity — all from a beautifully designed native experience that keeps your data on your device.</p>
+            <div class="hero-cta">
+                <a href="#features" class="btn btn-primary">Explore Features →</a>
+                <a href="support.html" class="btn btn-secondary">Contact Support</a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="device-frame">
+                    <div class="device-screen">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Net Worth</div>
+                            <div class="stat-value">$248,392</div>
+                            <div class="stat-change">▲ +$12,840 · +5.4% this month</div>
+                            <div class="mini-chart">
+                                <svg class="chart-svg" viewBox="0 0 200 60" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="grad" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.5"/>
+                                            <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M0,45 L20,40 L40,42 L60,32 L80,28 L100,30 L120,22 L140,18 L160,15 L180,12 L200,8 L200,60 L0,60 Z" fill="url(#grad)"/>
+                                    <path d="M0,45 L20,40 L40,42 L60,32 L80,28 L100,30 L120,22 L140,18 L160,15 L180,12 L200,8" fill="none" stroke="#6ee7b7" stroke-width="2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-title">Allocation</div>
+                            <div class="donut">
+                                <svg class="donut-svg" viewBox="0 0 36 36">
+                                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#1c2333" stroke-width="3"/>
+                                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#6ee7b7" stroke-width="3" stroke-dasharray="42 58" stroke-dashoffset="25"/>
+                                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#5eead4" stroke-width="3" stroke-dasharray="28 72" stroke-dashoffset="-17"/>
+                                    <circle cx="18" cy="18" r="15.915" fill="transparent" stroke="#fbbf24" stroke-width="3" stroke-dasharray="18 82" stroke-dashoffset="-45"/>
+                                </svg>
+                                <div>
+                                    <div class="legend-item"><span class="legend-dot" style="background:#6ee7b7"></span>Stocks 42%</div>
+                                    <div class="legend-item"><span class="legend-dot" style="background:#5eead4"></span>ETFs 28%</div>
+                                    <div class="legend-item"><span class="legend-dot" style="background:#fbbf24"></span>Crypto 18%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel" style="grid-column: 1 / -1;">
+                            <div class="panel-title">Top Holdings</div>
+                            <div class="row">
+                                <span class="row-symbol">AAPL</span>
+                                <span>120 shares · $19,840</span>
+                                <span class="row-change up">+8.2%</span>
+                            </div>
+                            <div class="row">
+                                <span class="row-symbol">VOO</span>
+                                <span>45 shares · $18,920</span>
+                                <span class="row-change up">+12.4%</span>
+                            </div>
+                            <div class="row">
+                                <span class="row-symbol">BTC</span>
+                                <span>0.42 · $28,400</span>
+                                <span class="row-change down">-2.1%</span>
+                            </div>
+                            <div class="row">
+                                <span class="row-symbol">TSLA</span>
+                                <span>30 shares · $6,180</span>
+                                <span class="row-change up">+4.6%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">Built for clarity</div>
+                <h2 class="section-title">Everything you need to think clearly.</h2>
+                <p class="section-sub">A complete toolkit that respects your data, your time, and your intelligence.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">High-density dashboard</h3>
+                    <p class="feature-desc">A hero net-worth card with period-over-period trends, a tappable donut chart for allocation, an interactive line chart you can drag across to reveal exact historical values, and a customisable bar chart of monthly net cash flow.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3 class="feature-title">Deep analytics</h3>
+                    <p class="feature-desc">Category-level returns, correlation heatmaps, K-line candlestick visualisation for watched symbols, and volatility scoring to keep risk in perspective — all without sending a byte off-device.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3 class="feature-title">Receipts that travel</h3>
+                    <p class="feature-desc">Snap a photo of a trade confirmation or attach a saved screenshot directly from the transaction form. Receipts are stored locally, zoomable with pinch, and deletable with a long-press.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧮</div>
+                    <h3 class="feature-title">Six planning tools</h3>
+                    <p class="feature-desc">Return calculator with CAGR and fee drag, compound interest projector with monthly contributions, retirement planner, multi-currency converter, correlation explorer, and DCA simulator that back-tests recurring purchases.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Custom goals</h3>
+                    <p class="feature-desc">Track progress with circular rings and daily or monthly burndown charts. Whether it's a down payment, an emergency fund, or financial independence, AIPEC helps you see the path.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📤</div>
+                    <h3 class="feature-title">Your data, exported</h3>
+                    <p class="feature-desc">Export your full record anytime to keep your own backup. You own your data — AIPEC never locks you in and never sells you out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="privacy" class="privacy-section">
+        <div class="container">
+            <div class="privacy-card">
+                <div class="section-eyebrow" style="margin-bottom:18px;">Privacy first, always</div>
+                <h2 class="section-title" style="margin-bottom:16px;">No account. No login. No server.</h2>
+                <p class="section-sub" style="margin:0 auto;">AIPEC is designed so that your most personal decisions never leave it.</p>
+                <div class="privacy-features">
+                    <div class="privacy-item">
+                        <h4>🔒 On-device only</h4>
+                        <p>Everything is stored locally on your iPhone or iPad.</p>
+                    </div>
+                    <div class="privacy-item">
+                        <h4>👤 Zero accounts</h4>
+                        <p>No sign-up, no email, no personal data collected.</p>
+                    </div>
+                    <div class="privacy-item">
+                        <h4>🚫 No tracking</h4>
+                        <p>No analytics SDKs, no ads, no third-party scripts.</p>
+                    </div>
+                    <div class="privacy-item">
+                        <h4>📦 Your export</h4>
+                        <p>Take a full backup anytime. You stay in control.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">Stress-test your decisions</div>
+                <h2 class="section-title">Six planning tools, one quiet place.</h2>
+                <p class="section-sub">From compound interest to DCA back-tests, run the numbers before you commit.</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-num">01</div>
+                    <div class="tool-name">Return Calculator</div>
+                    <p class="tool-desc">Model CAGR, fee drag, and time horizon side by side.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">02</div>
+                    <div class="tool-name">Compound Interest</div>
+                    <p class="tool-desc">Project growth with monthly contributions and inflation.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">03</div>
+                    <div class="tool-name">Retirement Planner</div>
+                    <p class="tool-desc">Estimate sustainable withdrawals across decades.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">04</div>
+                    <div class="tool-name">Currency Converter</div>
+                    <p class="tool-desc">Multi-currency with reference rates and history.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">05</div>
+                    <div class="tool-name">Correlation Explorer</div>
+                    <p class="tool-desc">See how assets move together across your portfolio.</p>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-num">06</div>
+                    <div class="tool-name">DCA Simulator</div>
+                    <p class="tool-desc">Back-test recurring purchases against historical data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Think clearly. Then move.</h2>
+                <p>AIPEC is an educational companion, not a broker. Use it to organise your thinking, then make your moves with a licensed professional.</p>
+                <a href="support.html" class="btn btn-primary">Get in touch →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-inner">
+            <div class="logo">
+                <div class="logo-mark">A</div>
+                <span>AIPEC</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+            </ul>
+            <div class="copyright">© 2026 AIPEC. All rights reserved.</div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Use — AIPEC</title>
+    <meta name="description" content="AIPEC's Terms of Use. Read the conditions under which you may use AIPEC, a personal investment journal." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #07090d;
+            --surface: #0e1218;
+            --surface-2: #141923;
+            --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.14);
+            --text: #e8ecf3;
+            --text-muted: #8a93a6;
+            --primary: #6ee7b7;
+            --primary-dark: #10b981;
+            --accent: #5eead4;
+            --gold: #fbbf24;
+            --gradient: linear-gradient(135deg, #6ee7b7 0%, #5eead4 50%, #38bdf8 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 9, 13, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 68px;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-mark {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: #07090d; font-size: 16px;
+        }
+
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a.active { color: var(--text); }
+
+        .page-header {
+            padding: 100px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(110, 231, 183, 0.08);
+            border: 1px solid rgba(110, 231, 183, 0.2);
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .badge-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .gradient-text {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .updated {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        article { padding-bottom: 80px; }
+
+        article h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 48px 0 16px;
+            letter-spacing: -0.01em;
+        }
+
+        article h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin: 28px 0 8px;
+            color: var(--primary);
+        }
+
+        article p {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 15px;
+        }
+
+        article ul {
+            list-style: none;
+            margin: 12px 0 24px;
+        }
+
+        article ul li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        article ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        article strong { color: var(--text); font-weight: 600; }
+
+        .callout {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(251, 113, 133, 0.04));
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+
+        .callout p { margin: 0; color: var(--text); }
+
+        .toc {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+
+        .toc h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .toc ol {
+            list-style: none;
+            counter-reset: toc-counter;
+        }
+
+        .toc li {
+            counter-increment: toc-counter;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            transition: color 0.2s;
+        }
+
+        .toc a:hover { color: var(--primary); }
+
+        .toc a::before {
+            content: counter(toc-counter, decimal-leading-zero);
+            color: var(--primary);
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            flex-shrink: 0;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            background: var(--surface);
+            text-align: center;
+        }
+
+        footer p { color: var(--text-muted); font-size: 13px; }
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        footer a:hover { color: var(--text); }
+
+        @media (max-width: 768px) {
+            .nav-links { gap: 14px; }
+            .page-header { padding: 70px 0 30px; }
+            article h2 { font-size: 20px; margin-top: 36px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-mark">A</div>
+                <span>AIPEC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="terms.html" class="active">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Effective September 2026
+            </div>
+            <h1>Terms of <span class="gradient-text">Use.</span></h1>
+            <p class="updated">Last updated: September 30, 2026</p>
+        </div>
+    </header>
+
+    <article class="container">
+        <p>These Terms of Use ("Terms") govern your use of AIPEC, a personal investment journal application ("the App") provided by us ("AIPEC," "we," or "us"). Please read them carefully. By installing or using AIPEC, you agree to these Terms.</p>
+
+        <div class="callout">
+            <p><strong>Educational tool only.</strong> AIPEC is an educational journaling application. It does not provide brokerage services, investment advice, financial planning, tax advice, or any other regulated service. Always consult a licensed professional before making investment decisions.</p>
+        </div>
+
+        <div class="toc">
+            <h3>Contents</h3>
+            <ol>
+                <li><a href="#acceptance">Acceptance of Terms</a></li>
+                <li><a href="#eligibility">Eligibility</a></li>
+                <li><a href="#license">License to Use AIPEC</a></li>
+                <li><a href="#your-data">Your Data and Content</a></li>
+                <li><a href="#no-advice">No Investment Advice</a></li>
+                <li><a href="#acceptable-use">Acceptable Use</a></li>
+                <li><a href="#third-party">Third-Party Services</a></li>
+                <li><a href="#ip">Intellectual Property</a></li>
+                <li><a href="#disclaimers">Disclaimers</a></li>
+                <li><a href="#limitation">Limitation of Liability</a></li>
+                <li><a href="#indemnification">Indemnification</a></li>
+                <li><a href="#termination">Termination</a></li>
+                <li><a href="#changes">Changes to These Terms</a></li>
+                <li><a href="#governing-law">Governing Law</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ol>
+        </div>
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>By downloading, installing, or using AIPEC, you confirm that you have read, understood, and agree to be bound by these Terms and our <a href="privacy.html" style="color:var(--primary);text-decoration:none;">Privacy Policy</a>. If you do not agree, please do not install or use AIPEC.</p>
+
+        <h2 id="eligibility">2. Eligibility</h2>
+        <p>You must be at least 13 years old to use AIPEC. By using the App, you represent that you meet this requirement. If you are using AIPEC on behalf of an organisation, you also represent that you have authority to bind that organisation to these Terms.</p>
+
+        <h2 id="license">3. License to Use AIPEC</h2>
+        <p>Subject to your compliance with these Terms and the Apple Media Services Terms and Conditions, we grant you a personal, non-exclusive, non-transferable, revocable licence to use the App on devices you own or control, solely for your personal investment tracking and journaling.</p>
+        <p>This licence is provided through the App Store under the standard Apple End User Licence Agreement (EULA). In the event of any conflict between these Terms and the Apple EULA, the Apple EULA controls with respect to the App Store relationship.</p>
+
+        <h2 id="your-data">4. Your Data and Content</h2>
+        <p>You retain all rights to the data you enter into AIPEC — holdings, transactions, receipts, goals, notes, and any other content ("Your Content"). Because AIPEC stores Your Content locally on your device:</p>
+        <ul>
+            <li>You are responsible for maintaining backups. Export your data regularly.</li>
+            <li>We have no access to Your Content and cannot recover it for you if your device is lost, damaged, or reset.</li>
+            <li>You may export or delete Your Content at any time through the App's settings.</li>
+            <li>Uninstalling AIPEC removes Your Content from that device.</li>
+        </ul>
+
+        <h2 id="no-advice">5. No Investment Advice</h2>
+        <p>AIPEC is an educational and organisational tool. It does not:</p>
+        <ul>
+            <li>Provide personalised investment, financial, tax, or legal advice.</li>
+            <li>Recommend buying, selling, or holding any security or asset.</li>
+            <li>Act as a broker-dealer, investment adviser, or fiduciary.</li>
+            <li>Guarantee the accuracy, completeness, or timeliness of any calculations.</li>
+        </ul>
+        <p>All charts, projections, simulations, and calculators are estimates based on inputs you provide. They are intended to support your thinking, not replace professional advice. Always consult a licensed financial professional before making investment decisions.</p>
+
+        <h2 id="acceptable-use">6. Acceptable Use</h2>
+        <p>You agree to use AIPEC only for lawful purposes and in accordance with these Terms. You agree not to:</p>
+        <ul>
+            <li>Reverse engineer, decompile, or attempt to extract the source code of AIPEC, except as expressly permitted by applicable law.</li>
+            <li>Modify, adapt, translate, or create derivative works based on AIPEC.</li>
+            <li>Use AIPEC to violate any applicable law, regulation, or third-party right.</li>
+            <li>Attempt to interfere with the security or functionality of AIPEC.</li>
+            <li>Use AIPEC to store or transmit content that is unlawful, infringing, or malicious.</li>
+            <li>Resell, rent, lease, or sublicense AIPEC to any third party.</li>
+        </ul>
+
+        <h2 id="third-party">7. Third-Party Services</h2>
+        <p>AIPEC may reference third-party data sources, market prices, or reference rates. These references are provided for educational purposes. We do not endorse, guarantee, or assume liability for the accuracy of any third-party information. Your reliance on any third-party content is at your own risk.</p>
+
+        <h2 id="ip">8. Intellectual Property</h2>
+        <p>AIPEC, including its design, code, graphics, logos, and content (excluding Your Content), is owned by us and protected by copyright, trademark, and other intellectual property laws. Nothing in these Terms transfers ownership of our intellectual property to you.</p>
+
+        <h2 id="disclaimers">9. Disclaimers</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, AIPEC IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, NON-INFRINGEMENT, OR ACCURACY.</p>
+        <p>We do not warrant that AIPEC will be uninterrupted, error-free, or free of harmful components, or that calculations will be accurate or suitable for your purposes.</p>
+
+        <h2 id="limitation">10. Limitation of Liability</h2>
+        <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL WE BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION LOSS OF DATA, LOSS OF PROFITS, OR LOSS OF GOODWILL, ARISING OUT OF OR RELATED TO YOUR USE OF (OR INABILITY TO USE) AIPEC.</p>
+        <p>Our total cumulative liability arising out of or related to these Terms will not exceed the amount you paid for AIPEC in the twelve (12) months preceding the claim, or USD 50, whichever is greater. Some jurisdictions do not allow the limitation of certain damages; in such cases, the limitations above apply to the maximum extent permitted.</p>
+
+        <h2 id="indemnification">11. Indemnification</h2>
+        <p>You agree to indemnify and hold us harmless from any claim, demand, loss, or expense (including reasonable attorneys' fees) arising out of your violation of these Terms, your use of AIPEC, or your violation of any law or third-party right.</p>
+
+        <h2 id="termination">12. Termination</h2>
+        <p>These Terms remain in effect for as long as you use AIPEC. You may terminate at any time by uninstalling the App. We may terminate or suspend your access if you violate these Terms. Upon termination, you must stop using AIPEC and may delete it from your devices.</p>
+
+        <h2 id="changes">13. Changes to These Terms</h2>
+        <p>We may update these Terms from time to time. When we do, we will revise the "Last updated" date above. Material changes will be highlighted through the App Store listing or an in-app alert where feasible. Continued use of AIPEC after changes constitutes acceptance of the updated Terms.</p>
+
+        <h2 id="governing-law">14. Governing Law</h2>
+        <p>These Terms are governed by the laws applicable to the provider of AIPEC, without regard to its conflict of laws principles. Any dispute arising out of or related to AIPEC or these Terms will be resolved in the competent courts of that jurisdiction, unless mandatory consumer protection laws of your residence give you the right to bring proceedings in your local courts.</p>
+        <p>Nothing in these Terms removes any protection you have under mandatory local consumer protection law.</p>
+
+        <h2 id="contact">15. Contact</h2>
+        <p>If you have any questions about these Terms, please contact us:</p>
+        <p><strong>Email:</strong> <a href="mailto:Sitikhodijah00232@gmail.com" style="color:var(--primary);text-decoration:none;">Sitikhodijah00232@gmail.com</a></p>
+        <p>We read and respond to every message.</p>
+    </article>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 AIPEC. Built with care for self-directed investors.</p>
+            <p style="margin-top:12px;">
+                <a href="index.html">Home</a> ·
+                <a href="privacy.html">Privacy</a> ·
+                <a href="support.html">Support</a> ·
+                <a href="terms.html">Terms of Use</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
